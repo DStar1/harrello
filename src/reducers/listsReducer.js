@@ -1,6 +1,6 @@
 const initialState = [
     {
-        title: "Last Episode",
+        title: "First Episode",
         id: 0,
         cards: [
             {
@@ -27,7 +27,7 @@ const initialState = [
             },
             {
                 id: 2,
-                text: "last text"
+                text: "not last text"
             }
         ]
     }

@@ -1,12 +1,15 @@
 import React from "react";
 import Card from '@material-ui/core/Card';
+import CardContent from "@material-ui/core/CardContent";// padding around text
 import Typography from '@material-ui/core/Typography';
 
 const TrelloCard = ({text}) => {
     return (
         <div style={styles.cardContainer}>
             <Card>
-                <Typography gutterBottom>{text}</Typography>
+                <CardContent>
+                    <Typography gutterBottom>{text}</Typography>
+                </CardContent>
             </Card>
         </div>
     );
@@ -14,8 +17,6 @@ const TrelloCard = ({text}) => {
 
 const styles = {
     cardContainer: {
-        textAlign: 'center',
-        // textIndent: 10,
         marginBottom: 7
     }
 }
