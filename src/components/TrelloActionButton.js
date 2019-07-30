@@ -41,7 +41,7 @@ class TrelloActionButton extends React.Component {
             dispatch(addList(text));
         }
         return;
-    }
+    };
 
     handleAddCard = () => {
         const { dispatch, listID } = this.props;
@@ -53,7 +53,6 @@ class TrelloActionButton extends React.Component {
             })
             dispatch(addCard(listID, text));
         }
-        return;
     }
 
     renderAddButton = () => {
@@ -133,7 +132,8 @@ const styles = {
         borderRadius: 3,
         height: 36,
         width: 272,
-        paddingLeft: 10
+        paddingLeft: 10,
+        paddingRight: 10
     },
     formButtonGroup: {
         marginTop: 8,

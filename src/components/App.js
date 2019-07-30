@@ -10,7 +10,7 @@ const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
-
+  // margin: 8px;
 class App extends React.Component {
 
   onDragEnd = result => {
