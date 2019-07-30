@@ -85,15 +85,38 @@ const listsReducer = (state = initialState, action) => {
                 droppableIdEnd,
                 droppableIndexStart,
                 droppableIndexEnd,
-                droppableId
+                droppableId,
+                type
             } = action.payload;
             const newState = [...state];
+
+            // Dragging lists
+            if (type === "list") {
+                const list = newState.splice(droppableIndexStart, 1);
+                newState.splice(droppableIndexEnd, 0, ...list);
+                return newState;
+            }
 
             // In the same list
             if (droppableIdStart === droppableIdEnd) {
                 const list = state.find(list => droppableIdStart === list.id);
                 const card = list.cards.splice(droppableIndexStart, 1)
                 list.cards.splice(droppableIndexEnd, 0, ...card)
+            }
+
+            // Another list
+            if (droppableIdStart !== droppableIdEnd) {
+                // Find list where drag happened
+                const listStart = state.find(list => droppableIdStart === list.id);
+                
+                // Pull out card from this list
+                const card = listStart.cards.splice(droppableIndexStart, 1);
+
+                // Find list where drag ended
+                const listEnd = state.find(list => droppableIdEnd === list.id);
+
+                // Put card in new list
+                listEnd.cards.splice(droppableIndexEnd, 0, ...card);
             }
 
             return newState;
